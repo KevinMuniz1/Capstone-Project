@@ -17,7 +17,7 @@ struct Menu: View {
                 .font(.title2)
             Text("Description")
             List {
-                Text("This is a test")
+                Text("This is a test 2")
                 }
             }
         }
