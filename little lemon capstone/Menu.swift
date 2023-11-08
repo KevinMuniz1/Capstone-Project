@@ -10,11 +10,13 @@ import Foundation
 import CoreData
 
 
+
 struct Menu: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
     func getMenuData() {
+        
         PersistenceController.shared.clear()
         
         let menuUrl = URL(string: "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json")
@@ -33,9 +35,13 @@ struct Menu: View {
                     newDish.title = items.title
                     newDish.price = items.price
                     newDish.image = items.image
+                    newDish.descriptions = items.description
                     print(items.title)
                     print(items.price)
                     print(items.image)
+                    print(items.description)
+                    print(items.category)
+                    
                 }
                 try? viewContext.save()
             } else {
@@ -55,23 +61,26 @@ struct Menu: View {
             Text("Chicago")
                 .font(.title2)
             Text("Description")
+            NavigationStack{
             FetchedObjects(){(dishes: [Dish]) in
                 List {
                     ForEach(dishes, id: \.id){dish in
-                        HStack(alignment: .center, spacing: 50) {
-                            Text(dish.title!)
-                            Text(dish.price!)
-                            AsyncImage(url: URL(string: dish.image!)){image in
-                                image.image?.resizable()
-                            }.frame(width: 50, height: 50, alignment: .trailing)
+                        NavigationLink(destination: menuItemDetails(dish: dish)){
+                            HStack(alignment: .center, spacing: 50) {
+                                Text(dish.title!)
+                                Text(dish.price!)
+                                AsyncImage(url: URL(string: dish.image!)){image in
+                                    image.image?.resizable()
+                                }.frame(width: 50, height: 50, alignment: .trailing)
+                            }
                         }
                     }
                 }
             }
+        }
         
 
         }.onAppear(perform: {
-            PersistenceController.shared.clear()
             getMenuData()
         })
     }

@@ -21,6 +21,7 @@
 		546479BE2AF6C2FD00691D48 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546479BD2AF6C2FD00691D48 /* Persistence.swift */; };
 		546479C02AF6C37200691D48 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546479BF2AF6C37200691D48 /* MenuList.swift */; };
 		546479C22AF6C38400691D48 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546479C12AF6C38400691D48 /* MenuItem.swift */; };
+		5466B1262AFAAE3A00A51E0F /* menuItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5466B1252AFAAE3A00A51E0F /* menuItemDetails.swift */; };
 		549032BB2AF9495700A614A6 /* dishesData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 549032B92AF9495700A614A6 /* dishesData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		546479BD2AF6C2FD00691D48 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		546479BF2AF6C37200691D48 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 		546479C12AF6C38400691D48 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		5466B1252AFAAE3A00A51E0F /* menuItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuItemDetails.swift; sourceTree = "<group>"; };
 		549032BA2AF9495700A614A6 /* dishesData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dishesData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 				546479B72AF6BF4E00691D48 /* UserProfile.swift */,
 				546479B52AF6BF3000691D48 /* Home.swift */,
 				546479B92AF6BF6700691D48 /* Menu.swift */,
+				5466B1252AFAAE3A00A51E0F /* menuItemDetails.swift */,
 				546479BB2AF6C2F200691D48 /* FetchedObjects.swift */,
 				546479BD2AF6C2FD00691D48 /* Persistence.swift */,
 				546479BF2AF6C37200691D48 /* MenuList.swift */,
@@ -289,6 +292,7 @@
 				546479B62AF6BF3000691D48 /* Home.swift in Sources */,
 				546479C22AF6C38400691D48 /* MenuItem.swift in Sources */,
 				5464798C2AF6BE8700691D48 /* little_lemon_capstoneApp.swift in Sources */,
+				5466B1262AFAAE3A00A51E0F /* menuItemDetails.swift in Sources */,
 				546479BA2AF6BF6700691D48 /* Menu.swift in Sources */,
 				549032BB2AF9495700A614A6 /* dishesData.xcdatamodeld in Sources */,
 			);
