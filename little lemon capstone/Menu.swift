@@ -15,6 +15,23 @@ struct Menu: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    @State var searchText = ""
+    
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+        
+        return [NSSortDescriptor(key: "title", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))]
+        
+    }
+    
+    func buildPredicate() -> NSPredicate {
+        
+        if searchText.isEmpty {
+            NSPredicate(value: true)
+        } else {
+            NSPredicate(format: "title CONTAINS [cd] %@", searchText)
+        }
+    }
+    
     func getMenuData() {
         
         PersistenceController.shared.clear()
@@ -62,7 +79,10 @@ struct Menu: View {
                 .font(.title2)
             Text("Description")
             NavigationStack{
-            FetchedObjects(){(dishes: [Dish]) in
+                TextField("Search menu", text: $searchText)
+                    .padding()
+                    .textFieldStyle(.roundedBorder)
+                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()){(dishes: [Dish]) in
                 List {
                     ForEach(dishes, id: \.id){dish in
                         NavigationLink(destination: menuItemDetails(dish: dish)){
