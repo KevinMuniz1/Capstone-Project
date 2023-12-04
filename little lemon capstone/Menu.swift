@@ -71,34 +71,42 @@ struct Menu: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Little Lemon")
-                .font(.largeTitle)
-                .foregroundStyle(.yellow)
-            Text("Chicago")
-                .font(.title2)
-            Text("Description")
-            NavigationStack{
-                TextField("Search menu", text: $searchText)
-                    .padding()
-                    .textFieldStyle(.roundedBorder)
-                FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()){(dishes: [Dish]) in
-                List {
-                    ForEach(dishes, id: \.id){dish in
-                        NavigationLink(destination: menuItemDetails(dish: dish)){
-                            HStack(alignment: .center, spacing: 50) {
-                                Text(dish.title!)
-                                Text(dish.price!)
-                                AsyncImage(url: URL(string: dish.image!)){image in
-                                    image.image?.resizable()
-                                }.frame(width: 50, height: 50, alignment: .trailing)
+        ZStack{
+            Color("littleLemonGreen")
+                .ignoresSafeArea()
+            VStack {
+                Text("Little Lemon")
+                    .font(.largeTitle)
+                    .foregroundStyle(.yellow)
+                Text("Chicago")
+                    .font(.title)
+                Text("Menu")
+                NavigationStack{
+                    TextField("Search menu", text: $searchText)
+                        .padding()
+                        .textFieldStyle(.roundedBorder)
+                        .background(.littleLemonGreen)
+                    Image(uiImage: .horizontalLemon)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250, height: 100)
+                    FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()){(dishes: [Dish]) in
+                        List {
+                            ForEach(dishes, id: \.id){dish in
+                                NavigationLink(destination: menuItemDetails(dish: dish)){
+                                    HStack(alignment: .center, spacing: 50) {
+                                        Text(dish.title!)
+                                        Text(dish.price!)
+                                        AsyncImage(url: URL(string: dish.image!)){image in
+                                            image.image?.resizable()
+                                        }.frame(width: 50, height: 50, alignment: .trailing)
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-        }
-        
+            }.padding(.top)
 
         }.onAppear(perform: {
             getMenuData()
