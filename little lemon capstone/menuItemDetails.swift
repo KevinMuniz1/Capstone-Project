@@ -24,7 +24,7 @@ struct menuItemDetails: View {
                     .padding()
                 
                 Text(dish.descriptions ?? "")
-            }
+            }.padding()
             Spacer()
         }.navigationTitle(dish.title!)
             .navigationBarTitleDisplayMode(.inline)
